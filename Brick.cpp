@@ -23,7 +23,7 @@ Brick::Brick(sf::Vector2f initialPos, sf::Color initialColor,
 
 void Brick::draw() {
   mSprite.setPosition(mCoords);
-  mSprite.setRotation(mAngle);
+  mSprite.setRotation(mAngle / M_PI * 180);
   mWindow->draw(mSprite);
 }
 
@@ -32,14 +32,19 @@ void Brick::checkEvents() {
     mSpeed += Acceleration;
   if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad2))
     mSpeed -= Acceleration;
-  if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad4))
-    mAngle += RotationSpeed;
   if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad6))
+    mAngle += RotationSpeed;
+  if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad4))
     mAngle -= RotationSpeed;
 }
 
 void Brick::move() {
   mCoords.x += mSpeed * cos(mAngle);
   mCoords.y += mSpeed * sin(mAngle);
-  mSpeed *= 0.95;
+  mSpeed *= FrictionCoef;
+}
+
+void Brick::update() {
+  checkEvents();
+  move();
 }

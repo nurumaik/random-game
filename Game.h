@@ -7,11 +7,19 @@ Hocevar. See the COPYING file for more details.
 #ifndef _GAME_H_
 #define _GAME_H_
 
+#include <SFML/Graphics.hpp>
+
+#include "Brick.h"
+
 class Game {
 public:
+  Game(sf::RenderWindow *wnd);
+  void update();
+  void draw();
 
 private:
-
+  sf::RenderWindow *mWindow;
+  Brick mBrick;
 };
 
 #endif /* _GAME_H_ */

@@ -14,14 +14,18 @@ public:
   Brick(sf::Vector2f initialPos, sf::Color initialColor, sf::RenderWindow *wnd);
 
   void draw();
-  void move();
-  void checkEvents();
+  void update();
 
   static const float SizeX = 150;
   static const float SizeY = 68;
   static const float Acceleration = 0.1;
-  static const float RotationSpeed = 0.5;
+  static const float RotationSpeed = 0.05;
+  static const float FrictionCoef = 0.99;
+
 private:
+  void move();
+  void checkEvents();
+
   sf::RenderWindow *mWindow;
   sf::Vector2f mCoords;
   float mSpeed;

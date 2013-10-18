@@ -7,6 +7,8 @@ Hocevar. See the COPYING file for more details.
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
+#include "Game.h"
+
 
 int main(int argc, char* argv[]) {
 
@@ -14,11 +16,12 @@ int main(int argc, char* argv[]) {
 
 
   sf::RenderWindow wnd(sf::VideoMode(800*1.5, 600*1.5), "myproject");
-  sf::Texture brick;
-  brick.loadFromFile("Sprites/brick.bmp");
-  sf::Sprite brickSprite;
-  brickSprite.setTexture(brick);
-  brickSprite.setPosition(sf::Vector2f(10, 50));
+  Game game(&wnd);
+  //sf::Texture brick;
+  //brick.loadFromFile("Sprites/brick.bmp");
+  //sf::Sprite brickSprite;
+  //brickSprite.setTexture(brick);
+  //brickSprite.setPosition(sf::Vector2f(10, 50));
   
   
 
@@ -28,10 +31,12 @@ int main(int argc, char* argv[]) {
       if (Event.type == sf::Event::Closed)
         wnd.close();
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad2))
-      brickSprite.move(sf::Vector2f(0, 1));
+    //if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad2))
+      //brickSprite.move(sf::Vector2f(0, 1));
+    game.update();
     wnd.clear(sf::Color::Black);
-    wnd.draw(brickSprite);
+    game.draw();
+    //wnd.draw(brickSprite);
     wnd.display();
   }
 }

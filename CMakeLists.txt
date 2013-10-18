@@ -19,7 +19,7 @@ if(CMAKE_BUILD_TYPE STREQUAL "")
 
         # Define sources and executable
         set(EXECUTABLE_NAME "myproject")
-        add_executable(${EXECUTABLE_NAME} main.cpp)
+        add_executable(${EXECUTABLE_NAME} main.cpp Game.cpp Brick.cpp)
 
 
         # Detect and add SFML
